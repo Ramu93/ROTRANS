@@ -1,0 +1,39 @@
+\documentclass{article}
+
+
+\input{config/includes.tex}
+\input{config/defs.tex}
+
+\newtheorem{theorem}{Theorem}[section]
+
+\title{Blockchain based on the ABC protocol - ROTRANS Project Group UPB 2020}
+\author{Akhila Jose, Amin Faez,  \\
+	Amit Kumar, Matthias Pilot, \\
+	Nico Wördenweber, Ramu Ramasamy
+	}
+
+\date{\today}
+
+\begin{document}
+
+\bibliographystyle{plain}
+\maketitle
+
+
+\input{modules/introduction/introduction.tex}
+\input{modules/network/network.tex}
+\input{modules/abccore/abccore.tex}
+\input{modules/visualization/visualization.tex}
+\input{modules/checkpoint/checkpoint.tex}
+\input{modules/tutorial.tex}
+\input{modules/conclusion.tex}
+\input{modules/personal_notes.tex}
+
+\bibliography{biblio}
+
+\appendix
+
+\input{modules/unordered_figures.tex}
+
+
+\end{document}

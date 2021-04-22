@@ -1,0 +1,24 @@
+%This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+% Math Defs
+\renewcommand{\epsilon}{\varepsilon}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand*{\bfrac}[2]{\genfrac{\lbrace}{\rbrace}{0pt}{}{#1}{#2}} %Fraction withour bar
+
+% Misc
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+% Add additional style definitions as required
+\newcounter{nodeidx}
+\setcounter{nodeidx}{1}
+\newcommand{\nodes}[1]{%
+	\foreach \num in {#1}{
+		\node[minimum size=6mm, draw, rectangle] (\arabic{nodeidx}) at (\arabic{nodeidx},0) {\num};
+		\stepcounter{nodeidx}
+	}
+}
+\newcommand{\brckt}[4]{% from, to, lvl, text
+	\draw (#1.south west) ++($(-.1, -.1) + (-.1*#3, 0)$) -- ++($(0,-.1) + (0,-#3*1.25em)$) -- node [below] {#4} ($(#2.south east) + (.1,-.1) + (.1*#3, 0) + (0,-.1) + (0,-#3*1.25em)$) -- ++($(0,#3*1.25em) + (0,.1)$);%
+}

@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInput component Matches snapshot 1 - without button 1`] = `
+<div
+  className=""
+  data-testid="textInputMainDiv"
+>
+  <span
+    className="text-label"
+    data-testid="textInputLabel"
+  >
+    ABC
+  </span>
+  <div
+    className="text-combo"
+  >
+    <input
+      className="text-input"
+      data-testid="textInput"
+      type="text"
+      value="123"
+    />
+  </div>
+</div>
+`;
+
+exports[`TextInput component Matches snapshot 2 - with button 1`] = `
+<div
+  className="text-div"
+  data-testid="textInputMainDiv"
+>
+  <span
+    className="text-label"
+    data-testid="textInputLabel"
+  >
+    ABC
+  </span>
+  <div
+    className="text-combo"
+  >
+    <input
+      className="text-input"
+      data-testid="textInput"
+      type="text"
+      value="123"
+    />
+    <button
+      className="text-button icon"
+      data-testid="textInputButton"
+    >
+      <img
+        src={
+          Object {
+            "ReactComponent": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "render": [Function],
+            },
+            "__esModule": true,
+            "default": "lock.svg",
+          }
+        }
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`TextInput component Matches snapshot 3 - with button, hidden prop, br 1`] = `
+Array [
+  <div
+    className="text-div"
+    data-testid="textInputMainDiv"
+  >
+    <span
+      className="text-label"
+      data-testid="textInputLabel"
+    >
+      ABC
+    </span>
+    <div
+      className="text-combo"
+    >
+      <input
+        className="text-input text-hide"
+        data-testid="textInput"
+        type="text"
+        value="123"
+      />
+      <button
+        className="text-button icon"
+        data-testid="textInputButton"
+      >
+        <img
+          src={
+            Object {
+              "ReactComponent": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              },
+              "__esModule": true,
+              "default": "lock.svg",
+            }
+          }
+        />
+      </button>
+    </div>
+  </div>,
+  <br
+    data-testid="textInputBr"
+  />,
+]
+`;

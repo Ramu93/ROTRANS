@@ -1,0 +1,35 @@
+version: 1
+disable_existing_loggers: True,
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stdout
+loggers:
+  abcnet.networking.events:
+    level: WARNING
+  abcnet:
+    level: WARNING
+  __main__:
+    level: DEBUG
+  handlers.MessageDelegator:
+    level: WARNING
+  transcriber:
+    level: WARNING
+  outch:
+    level: WARNING
+  stab_abc_consens:
+    level: INFO
+  abcckpt:
+    level: DEBUG
+  abcckpt.prio_handler:
+    level: INFO
+  abcckpt.stab_abc_consens:
+    level: INFO
+root:
+  level: DEBUG
+  handlers: [console]

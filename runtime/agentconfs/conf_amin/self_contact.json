@@ -1,0 +1,8 @@
+{
+  "id" : "AminsNode",
+  "receiveAddr" : "tcp://127.0.0.1:5009",
+  "publishAddr" : "tcp://127.0.0.1:5008",
+  "bindReceiveAddr" : "tcp://*:5009",
+  "bindPublishAddr" : "tcp://*:5008",
+  "net_private_key_seed" : "AminsPrivateKey"
+}

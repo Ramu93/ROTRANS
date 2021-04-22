@@ -1,0 +1,9 @@
+.ckpt-status-message {
+  width: 95%;
+  padding: 20px;
+  padding-left: 0px;
+}
+
+.ckpt-status-title {
+  font-weight: 600;
+}

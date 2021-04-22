@@ -1,0 +1,8 @@
+[
+  {
+    "id" : "Gateway",
+    "receiveAddr" : "tcp://127.0.0.1:5011",
+    "publishAddr" : "tcp://127.0.0.1:5010",
+    "pubKey" : "303a626485ae3aa7d6d268cbd21ae5916bab2ed8ec748529355422b6dc6185d9"
+  }
+]

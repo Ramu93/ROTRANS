@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component Matches snapshot 1 - without icon 1`] = `
+<div
+  className="custom-btn-div"
+>
+  <div
+    className="custom-btn-inner-div"
+  >
+    <button
+      className="custom-btn"
+    >
+      <div
+        className="txt-btn-div"
+      >
+        <span
+          className="btn-label"
+          data-testid="label"
+        >
+           
+          Transer
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Button component Matches snapshot 2 - with icon 1`] = `
+<div
+  className="custom-btn-div"
+>
+  <div
+    className="custom-btn-inner-div"
+  >
+    <button
+      className="custom-btn"
+    >
+      <div
+        className="txt-btn-div"
+      >
+        <span
+          className="btn-label"
+          data-testid="label"
+        >
+           
+          Transfer
+        </span>
+      </div>
+      <div
+        className="icon-btn-div"
+      >
+        <span
+          className="btn-icon"
+          data-testid="icon"
+        >
+          <img
+            src={
+              Object {
+                "ReactComponent": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "render": [Function],
+                },
+                "__esModule": true,
+                "default": "go.svg",
+              }
+            }
+          />
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+`;

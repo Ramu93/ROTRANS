@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Distribution / packaging
+env/
+build/
+.venv/
+.idea/
+# scanner report
+.scannerwork/
+# db/logs/journal
+tests/checkpoint.db-journal
+tests/zmq_server.log
+zmq_server.log
+checkpoint.db
+tests/checkpoint.db
+**.stats.yaml
+coverage.xml
+.coverage
+**/*.egg-info/

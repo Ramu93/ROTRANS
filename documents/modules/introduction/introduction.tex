@@ -1,0 +1,44 @@
+\section{Introduction}
+
+Within the scope of the project group ROTRANS of the computer science masters program at University Paderborn, our goal was to implement a cryptocurrency system based on the Asynchronous Blockchain without Consensus (ABC) protocol. 
+
+Since there is no total ordering of transactions in the protocol, we could not implement general smart contracts using ABC. We use an asynchronous network with eventual delivery of messages with no assumptions on message delivery time or order. Participants, generally called "agents", in the network communicate by using asymmetric encryption functionality and a deterministic hash function is used to uniquely refer messages.
+
+A DAG (Directed Acyclic Graph) structure is used to graphically represent the current state of the system, while the underlying data structure is based on a prefix tree to increase efficiency. The implemented protocol follows a Delegated-Proof-of Stake(DPoS) model and has validators to work for confirmation of transactions, for which they are rewarded with incentives. 
+
+ABC is in a permissionless setting where agents can freely enter and leave the system at any time, which we support by introducing checkpoints to the system. Additionally, checkpoints prune a substantial amount of past transactions and reduce the size of the transaction DAG. Although ABC has no need for a committee to create consensus, we decided early on that we would use a committee to create checkpoints.
+
+We used Python to implement the application logic, and ZeroMQ as a networking library in order to realize communication between agents, as well as between our application logic and the graphical user interface which is accessible with a standard internet browser to be as user friendly as possible.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

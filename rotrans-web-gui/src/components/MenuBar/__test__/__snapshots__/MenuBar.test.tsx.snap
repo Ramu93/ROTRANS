@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuBar component Matches transactions snapshot  1`] = `
+<div
+  className="menubar"
+>
+  <div
+    className="menu menu-no-pointer"
+  >
+    <img
+      src={
+        Object {
+          "ReactComponent": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "__esModule": true,
+          "default": "coin.svg",
+        }
+      }
+    />
+  </div>
+  <a
+    href="/visualization"
+    onClick={[Function]}
+  >
+    <div
+      className="menu"
+      data-testid="vizMenuItem"
+    >
+      <img
+        src={
+          Object {
+            "ReactComponent": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "render": [Function],
+            },
+            "__esModule": true,
+            "default": "board.svg",
+          }
+        }
+      />
+    </div>
+  </a>
+  <a
+    href="/transactions"
+    onClick={[Function]}
+  >
+    <div
+      className="menu menu-active"
+      data-testid="transactionsMenuItem"
+    >
+      <img
+        src={
+          Object {
+            "ReactComponent": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "render": [Function],
+            },
+            "__esModule": true,
+            "default": "rocket.svg",
+          }
+        }
+      />
+    </div>
+  </a>
+</div>
+`;
+
+exports[`MenuBar component Matches visualization snapshot  1`] = `
+<div
+  className="menubar"
+>
+  <div
+    className="menu menu-no-pointer"
+  >
+    <img
+      src={
+        Object {
+          "ReactComponent": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          },
+          "__esModule": true,
+          "default": "coin.svg",
+        }
+      }
+    />
+  </div>
+  <a
+    href="/visualization"
+    onClick={[Function]}
+  >
+    <div
+      className="menu menu-active"
+      data-testid="vizMenuItem"
+    >
+      <img
+        src={
+          Object {
+            "ReactComponent": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "render": [Function],
+            },
+            "__esModule": true,
+            "default": "board.svg",
+          }
+        }
+      />
+    </div>
+  </a>
+  <a
+    href="/transactions"
+    onClick={[Function]}
+  >
+    <div
+      className="menu"
+      data-testid="transactionsMenuItem"
+    >
+      <img
+        src={
+          Object {
+            "ReactComponent": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "render": [Function],
+            },
+            "__esModule": true,
+            "default": "rocket.svg",
+          }
+        }
+      />
+    </div>
+  </a>
+</div>
+`;

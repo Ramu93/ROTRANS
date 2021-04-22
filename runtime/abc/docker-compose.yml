@@ -1,0 +1,30 @@
+version: "3.5"
+
+services:
+  agent:
+    build:
+      context: .
+    ports:
+      - "8001:8001"
+      - "8002:8002"
+      - "5001:5001"
+    networks:
+      - abc_local_net
+
+  backend:
+    image: ramu93/abc-api:latest
+    ports:
+      - "5000:5000"
+    links:
+      - agent
+    networks:
+      - abc_local_net
+
+  gui:
+    image: ramu93/abc-gui:latest
+    ports:
+      - "80:80"
+
+networks:
+  abc_local_net:
+    driver: bridge

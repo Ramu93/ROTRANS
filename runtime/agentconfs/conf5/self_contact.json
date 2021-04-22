@@ -1,0 +1,8 @@
+{
+  "id" : "peer5",
+  "receiveAddr" : "tcp://127.0.0.1:5054",
+  "publishAddr" : "tcp://127.0.0.1:5055",
+  "bindReceiveAddr" : "tcp://*:5054",
+  "bindPublishAddr" : "tcp://*:5055",
+  "uiServerPort": 6005
+}

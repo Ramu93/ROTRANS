@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BalanceIndicator component Matches snapshot 1`] = `
+Array [
+  <span
+    className="value-label"
+  >
+    Available Balance
+  </span>,
+  <span
+    className="value-text"
+    data-testid="balanceIndicatorValueText"
+  >
+    123
+  </span>,
+]
+`;

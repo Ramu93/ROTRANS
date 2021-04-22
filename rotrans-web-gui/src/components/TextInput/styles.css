@@ -1,0 +1,49 @@
+.text-div {
+  margin-right: 30px;
+}
+
+.text-input {
+  width: 432px;
+  height: 36px;
+  border: 1.5px solid #ededed;
+  border-radius: 4px;
+  padding-left: 8px;
+}
+
+.text-input-full {
+  width: 100%;
+}
+
+.text-input:focus {
+  outline-style: none;
+}
+
+.text-label {
+  font-size: 15px;
+  line-height: 32px;
+  color: #333333;
+}
+
+.text-button {
+  margin-left: 8px;
+  height: 40px;
+  width: 40px;
+  background-color: #f3f3f3;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+}
+
+.text-combo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.text-hide {
+  filter: blur(0.2rem) !important;
+}

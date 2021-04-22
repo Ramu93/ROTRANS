@@ -1,0 +1,9 @@
+[submodule "checkpoint"]
+	path = checkpoint
+	url = irb-git@git.cs.uni-paderborn.de:rotrans-pg/checkpoint.git
+[submodule "network"]
+	path = network
+	url = irb-git@git.cs.uni-paderborn.de:rotrans-pg/network.git
+[submodule "abc"]
+	path = abc
+	url = irb-git@git.cs.uni-paderborn.de:rotrans-pg/abc.git

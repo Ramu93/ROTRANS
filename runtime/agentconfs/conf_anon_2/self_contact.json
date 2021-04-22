@@ -1,0 +1,8 @@
+{
+  "id" : "Anon2",
+  "receiveAddr" : "tcp://127.0.0.1:7103",
+  "publishAddr" : "tcp://127.0.0.1:7104",
+  "bindReceiveAddr" : "tcp://*:7103",
+  "bindPublishAddr" : "tcp://*:7104",
+  "uiServerPort": 7001
+}

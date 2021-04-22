@@ -1,0 +1,7 @@
+[
+  {
+    "id" : "example-com-peer",
+    "receiveAddr" : "tcp://example.com:8081",
+    "publishAddr" : "tcp://example.com:8082"
+  }
+]

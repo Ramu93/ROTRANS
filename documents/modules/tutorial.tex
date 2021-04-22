@@ -1,0 +1,142 @@
+\section{How to start the Application}
+
+To get our application started, one has to take multiple steps before. This is due to the fact that our distributed system could technically run as a web service.
+There are three main repositories to be cloned into different folders:
+
+\vspace{2mm}
+\begin{tabular}{ll}
+	web-gui & https://git.cs.uni-paderborn.de/rotrans-pg/rotrans-web-gui \\
+	gui-api & https://git.cs.uni-paderborn.de/rotrans-pg/gui-api \\
+	runtime & https://git.cs.uni-paderborn.de/rotrans-pg/runtime \\	
+\end{tabular}
+\vspace{2mm}
+
+Unfortunately, each repository needs a different setup process, as described in their respective \texttt{README} files. For completeness, we want to describe the steps needed here, too. For this, we start with the web-gui.
+
+\subsection*{Web GUI}
+\textit{Running in production mode:} After cloning the web-gui repository, one needs to build the docker image first. This requires a docker setup on the host machine, which appears to be easier for Linux, but is also available for Windows. To build the docker image the following command needs to be executed in a shell in this repositories root folder:
+
+\vspace{2mm}
+\begin{tabular}{l}
+	docker build -t abc-gui . 
+\end{tabular}
+
+\vspace{2mm}
+After this is done, most of the work is actually done for this part. The last command for this part to work is to run the docker image:
+
+\vspace{2mm}
+\begin{tabular}{l}
+	docker run -d abc-gui
+\end{tabular}
+\vspace{2mm}
+
+The image now runs in the background and does not require any maintenance or further user input.
+
+\textit{Running in development mode:} This requires a latest version of Node.js runtime. In the root directory of the project, the following command needs to be executed in a shell:
+
+\vspace{2mm}
+\begin{tabular}{l}
+	npm install
+\end{tabular}
+\vspace{2mm}
+
+This command installs all the dependencies required to run the application in development mode.
+
+To start the application, the following command needs to be executed:
+\vspace{2mm}
+
+\begin{tabular}{l}
+	npm start
+\end{tabular}
+\vspace{2mm}
+
+This command boots up the application.
+
+\subsection*{GUI API}
+The second part is to get the interface between GUI and Process running. For this, the first step would be to clone the repository. After this is done, the following command needs to be executed in the root directory of the project: 
+
+\vspace{2mm}
+\begin{tabular}{l}
+	pip install -r requirements.txt
+\end{tabular}
+\vspace{2mm}
+
+This command installs all the dependencies required to run the application. Executing the following command in the root directory starts the RESTful web service running on port \textit{5000}. This port can be configured in the \textit{.env} file. 
+
+\vspace{2mm}
+\begin{tabular}{l}
+	python src/main.py 
+\end{tabular}
+\vspace{2mm}
+
+\textbf{Alternatively}, the API can also be started by configuring a Python virtual environment. For this one needs to setup a virtual environment by executing the following command in the shell: 
+
+\vspace{2mm}
+\begin{tabular}{l}
+	virtualenv venv
+\end{tabular}
+\vspace{2mm}
+
+Then, the following command is to be executed to activate the virtual environment: 
+
+\vspace{2mm}
+\begin{tabular}{l}
+	source venv/bin/activate
+\end{tabular}
+\vspace{2mm}
+
+Once the virtual environment is activated, the first two commands should be followed to install the dependencies within the virtual environment and start the API. 
+
+
+\subsection*{Runtime}
+Lastly, the runtime repository needs to be cloned. This repository contains the modules network, checkpoint and abccore as submodules and comes already with some files preconfigured.
+
+After cloning this repository, one needs to initialize and update its submodules, using the following commands in the root folder of the repository:
+
+\vspace{2mm}
+\begin{tabular}{l}
+	git submodule init \\ 
+	git submodule update \\
+\end{tabular}
+
+\vspace{2mm}
+
+
+This ensures that all submodules run with the latest stable state of our product. Then it is necessary to configure the agent processes that should be started. For this, it is neccessary to switch to the folder \texttt{agentconfs/} in the root directory. This already includes exemplary configuration folders, each one used to configure a specific peer. Such a configuration folder needs to contains three files, \texttt{initial\_contacts.json}, \texttt{privkey.json}, and \texttt{self\_contact.json}, which need to be configured accordingly.
+
+The \texttt{initial\_contacts.json} holds information about an entry point of the network. This could be any party known to be participating in the network, or a trusted friend. 
+
+The file \texttt{privkey.json} holds the private key the corresponding Agent will be able to use. For testing purposes, each of the \texttt{conf} folders contains one of the initial keys with stake given in the Genesis.
+
+Lastly, \texttt{self\_contact.json} holds information about how to contact this Agent process. this will be shared with all peers, so it needs to be set to accordingly. In this file, it is also possible so define a "uiServerPort" that allows us to access the GUI of multiple agents at once. 
+
+To start the application install the application in a virtual python environment.
+
+\vspace{2mm}
+\begin{tabular}{l}
+	python -m venv .venv \\ 
+	source .venv/bin/activate \\
+	pip install -r requirements.txt \\
+
+\end{tabular}
+
+\vspace{2mm}
+
+The processes can now be started by running the \texttt{initializr.py} script. In addition, it is neccessary to define which configuration folder is selected. To start the agent configured in conf0 use:
+
+\vspace{2mm}
+\begin{tabular}{l}
+	python initializr.py -cd agentconfs/conf0
+\end{tabular}
+\vspace{2mm}
+
+The last thing missing is then to connect to the application by navigating to the following URL, provided you run it locally:
+
+\vspace{2mm}
+\begin{tabular}{l}
+	\textit{http://localhost:80/$<$AGENT\_PORT$>$/transactions}
+\end{tabular}
+\vspace{2mm}
+
+\textit{$<$AGENT\_PORT$>$} is a placeholder and should be replaced with the \textit{uiServerPort} field configured in the \textit{self\_contact.json} file of the agent.
+

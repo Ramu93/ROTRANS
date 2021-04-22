@@ -1,0 +1,88 @@
+.toolbar-details-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar-title-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar-sub-title {
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.toolbar-profile-component {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3f385;
+  width: auto;
+  border-radius: 4px;
+  height: 72px;
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+.toolbar-image-div {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toolbar-avatar {
+  background-color: tomato;
+  width: 48px;
+  height: 48px;
+  border-radius: 25px;
+}
+
+.toolbar-name-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 8px;
+  margin-right: 16px;
+  width: 220px;
+  overflow: hidden;
+}
+
+.toolbar-name {
+  font-size: 16px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toolbar-ip {
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+.toolbar-icon-div {
+  width: 36px;
+}
+
+.toolbar-profile-div-popup {
+  position: absolute;
+  background-color: white;
+  padding: 6px 6px;
+  border-radius: 6px;
+  height: fit-content;
+  max-height: 240px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1;
+  margin-left: -6px;
+}
+
+.toolbar-profile-popup-hide {
+  visibility: hidden;
+}

@@ -1,0 +1,8 @@
+{
+  "id" : "RamusNode",
+  "receiveAddr" : "tcp://10.168.178.60:5009",
+  "publishAddr" : "tcp://10.168.178.60:5008",
+  "bindReceiveAddr" : "tcp://*:5009",
+  "bindPublishAddr" : "tcp://*:5008",
+  "net_private_key_seed" : "RamusPrivateKey"
+}

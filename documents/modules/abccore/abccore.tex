@@ -1,0 +1,12 @@
+\section{Application Logic - abccore}
+
+This module was created by Matthias Pilot and Nico Wördenweber. In many parts of this module it is not clear to say which one of us is solely responsible for methods of the classes or submodules, as in general we worked closely together. A perfect example for this would be the logic of the Agent class, since it started to be solely Matthias' part, but soon after finishing the first iteration of the data object structure, Nico joined in and provided some of the logic of the Agent, too, where those methods were closer related to the data than to functionality.
+
+\paragraph{Note} that, before going into too much detail, there are some things to be keep in mind throughout this chapter. The main actor in our system is called an agent. The class Agent represents this actor and builds the functions any user has. Although the Agent will be discussed later, note that any user may have multiple instances of the Agent running, and each of these can hold multiple key pairs used to issue transactions in the system. Also, we use Transaction, Acknowledge, Checkpoint, Genesis and Wallet to denote data objects.
+
+A Validator is an Agent whose main purpose is to confirm correct Transaction objects. Whereas a user may be solely interested in spending and receiving money, a Validator earns money by the amount of work it puts into the confirmation of transactions and the creation of checkpoints. However, every running Agent acts automatically as Validator, but the users reward will be much smaller if the Agent only runs while the user actively participates int he system by sending money.
+
+\input{modules/abccore/nico.tex}
+
+\input{modules/abccore/matthias.tex}
+

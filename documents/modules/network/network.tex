@@ -1,0 +1,141 @@
+\section{Network - abcnet}
+
+This module was developed by a group composed of a single member, Amin Faez.  
+
+The primary goal of this group was to include the code necessary to connect to and reliably communicate with network peers so that subsequent groups could focus solely on the application logic. 
+For this purpose, a framework was designed in which the application layer fills the necessary gaps, defined by the network framework, that solely determines how to react to the content incoming messages and what to send at which time.
+
+In addition, this group realized a set of reusable code for the benefit of other groups that are not network related, such as:
+
+\begin{itemize}
+    \item A simulation environment and testing library.
+    \item Push and pull abstraction mechanism.
+    \item Benchmarking and measurement capabilities.
+\end{itemize}
+
+\subsection{Networking functionalities}
+
+This subsection deals with the functionalities provided for the purpose of message passing and network integration.
+
+A node is initialized with its contact information that describes how to reach the peer over the internet.
+A peer contact information includes the peer identifier in addition to its reachable address and optionally a public key that is used by the peer to verify network messages.
+A node is introduced into the network by a set of initial contact information of peers.
+
+When bootstrapping the application, the node first connects to the initial set of peers and listens to their outgoing broadcast messages. In addition, it introduces himself directly to all peers listed in the initial set. This way the other peers can also connect and listen to the peers broadcast messages.
+
+After the introduction finishes, the node keeps a table of all its known live peers. This table includes the necessary contact information but also information about the connection state, such as last received direct message. Periodically the peer identifiers in this table are shared with all neighbors. This way peers can request peers that are missing in their local table. After a few rounds, the network forms a clique. 
+
+Over the life of the application, the network module performs connection management in the background which includes observing the liveliness of its connections. If a peer has been silent for a long time the agent will try to ping this peer and awaits a response. In the case that the peer further remains silent, the peer will disconnect from the peer and delete its entry in the live peers table. 
+
+Peers that re-appear in the network seamlessly re-connect and integrate with the network again using the above mechanism, without the rest of the application noticing it. 
+
+\subsection{Networking functionalities improvements}
+
+This subsection highlights weaknesses in the current implementation of the network functionalities. 
+These weaknesses can, however, be overcome without breaking compatibility, so it is possible to implement more sophisticated solutions on top of the current code, without further changes required by other groups. 
+
+\subsubsection{Network efficiency}
+
+The message dissemination protocol used for broadcasting messages to all peers scales poorly with large amount of network participants. 
+This is because when a node wants to broadcast a message, it will do so by sending that message to each of its connections one by one. As the network topology forms a clique, this ensures that a broadcast message reaches all peers reliably. 
+
+We decided for this simple, yet effective solution for the purpose of speeding up the implementation of the network capabilities. This was needed because the other groups have a high dependency on a working network solution, to test and run their code. 
+After finishing this implementation and pushing a first working solution in November, it was set as a goal to improve the efficacy of the message passing protocol.
+Still, this goal had a lower priority than many other tasks of the network and it also had a lower priority than getting all the groups finished. After the network group integrated with other groups in order to help finish the application logic, there was not much time left for further improvements.
+
+\subsubsection{Hosting a node behind a NAT-interfaces}
+
+Currently, the application only supports "full-node" mode. In contrast, a "light-node" mode would enable users that are in a sub-network behind a NAT interface to participate without being directly reachable.
+
+This can be done by having servers dedicated as gateway that rebroadcast incoming messages to all peers. A light-node could then broadcast a message by contacting such a gateway. The gateway in turn serves this message to all clients. This way, a light-node can also receive broadcast messages by downloading them from the gateway.
+
+This feature would have been immensely usefull for demonstration of the application. Because group member worked from home, it was impossible to get a peer-to-peer system running as not all group members could host nodes that were reachable by the other group members.
+
+The network group started the implementation of this feature, but gave it up in order to focus on higher priority tasks. So an unfinished version of this feature is already existent.
+
+\subsection{Simulation environment}
+
+The network group provides functionality to simulate the network for testing purposes. For this purpose it realized a bare-bone implementation of ZeroMQ, which passes messages in a reliable FIFO fashion that is not necessarily provided by real networks. This functionality enables the deterministic testing of application layer which validates functional properties promised by the code in an isolated manner.
+
+\subsection{Peer-to-Peer authentication and message encryption}
+
+\paragraph{Authentication:} The network implementation provides authentication over the network. This is realised on a lower level, such that it does not interfere with the application layer.
+
+With this implementation the network ensures that adversaries cannot spoof their identities as known peers.
+
+Currently, the only benefit of this mechanic is that peers that introduce themselves with a public key, can shutdown without having to fear that an adversary takes their place by spoofing their identities.
+
+Further usages of network level authentication could be mitigating denial-of-service attacks. A peer that notices a high network load would switch to a "whitelist mode" in which only messages that are authenticated by well-known peers handles and the remaining messages are dropped. 
+
+Another more sophisticated option, in context of ABC, would be to prioritize incoming message based on the stake of the sender. This way the network throughput can be guaranteed even under stress-full situations.
+
+\paragraph{Encryption:}
+The network module does not provide the functionality to encrypt messages that are exchanged among peers.
+The main reason for this decision was that message content in context of ABC does not contain any sensitive information. 
+However, in practice an encryption on the network level can ensure that messages are not manipulated by adversaries. In context of our ABC implementation a manipulation of messages can cause a drop of efficiency in respect to transaction throughput but would not enable adversarial attacks such as double spending.
+
+The network code offers opportunities further extensions that allow the peers to perform a handshake before the main connection. In this handshake, and with the use of authenticated messages, a shared symmetric key can be agreed upon that can be used to encrypt further peer messages.
+
+\subsection{Push and pull abstraction:}
+
+In early group discussion we noticed that the application layer in context of ABC, can work on an abstraction layer on-top of the network, that can be provided by a set message types in the network module.
+These message types can be reused by different application code, thus it would save us from duplicating very similar code. 
+For this purpose, we designed the push and pull mechanism of an abstract piece of information that we call \textbf{items}. In context of ABC, items represent transactions, acknowledgements and checkpoint. But as our implementation progressed, we used this abstract type for any piece of information that qualifies the following criteria: 
+\begin{itemize}
+    \item An item is uniquely identified by a string called ID. An item ID is also not forgeable. This is ensured by generating the id by plugging the content of the item into a cryptographic hash function that provides us with second pre-image resistance and collision resistance.
+    \item Items, such as transactions, are data that are found duplicated on each peer. Thus, the application code needs a mechanism that ensures that all peers have a similar view of all items at the same time.
+\end{itemize}
+
+To realise this, we created three main message types that can be used by a peer on any item type:
+
+\begin{enumerate}
+    \item \textbf{items checklist:} A set of item ID's. This checklist is periodically shared with peers. Peers look for any IDs, that is unknown to them and request them with a items request message.
+    \item \textbf{items request:} A set of item ID's. When a peer receives a request message, it can queue up the content of those items locally and eventually send a items content message.
+    \item \textbf{items content:} A list of item content. These large bulky messages contain requested items. A peer then processes these items based on what item type it is. A transaction, for example, is verified and put into the DAG.
+\end{enumerate}
+
+Using this abstraction proved as an efficient way to keep up with the state of all peers. 
+In fact it allowed us to iteratively improve on the design: 
+
+Initially requested items would be immediately answered with a bulky items content message. 
+
+An improvement in efficiency was made, once we realised that peers would wait for a configurable period of time, and collect a set of requested items before it would serve their content. This way, it saved the peer from serving the same request multiple times.
+
+A further improvement was made, once we realised that if a peer observes a request, but then also receives the requested item content by a broadcast of another peer, that its pending request is obsolete as the initial request has already been served. This idea was also applied to requests: Once a peer observed missing items in an incoming checklist, it would flag them as missing but would not immediately request them. Instead, the request would be buffered locally and if another request for the same item has been observed the request flag can again be set to false.
+
+In a best-case scenario, the resulting implementation allows each item to be requested and served exactly once.
+
+
+\subsection{Application performance benchmarking}
+
+The final duty of the network group was to provide a set of benchmarks that allows us to measure non-functional properties of the system.
+In context of a transaction system, the two most important properties in terms efficiency are:
+\begin{itemize}
+    \item \textbf{Transaction throughput} measures the amount of confirmed transactions that are confirmed in a given time span. 
+    \item \textbf{Transaction latency} measures the amount of time it is needed to confirm a latency.
+\end{itemize}
+
+The test suite provided by the network group operated in the following way: Given a target throughput, it spams the network with transactions. It then records for each of the transactions the time needed until those received enough acknowledgements. 
+The statistics are gathered and serialized periodically.
+
+Figure \ref{fig:txn_latency} shows a histogram of transaction latency. The average transaction latency in a typical run\footnote{Measurements were performed using 10 peers on a local host executed on a 12 core system.} is about 7.13 seconds with $71.4~%$ of the transactions completing in less than 7 seconds. The highest observed transaction confirmation time varied from run to run and was in the range of 50 to 70 seconds. These slow transactions occur most frequently when the system is in the process of releasing a new checkpoint.
+
+\begin{figure}[htbp]
+    \centering
+    \label{fig:txn_latency}
+    \includegraphics[width=0.9\linewidth]{figures/drawio/latency.pdf}
+	\caption{\footnotesize{Transaction latency histogram. Each column shows how many transaction were confirmed for each latency group. For example, about 250 transactions were able to receive confirmation in less than a second.}}
+\end{figure}
+
+ The transaction throughput of the system is shown in figure \ref{fig:txn_throughput}. As can be seen in the diagram, the first checkpoint, which is created at 3 minutes after application launch causes an efficiency drop in the system. This is due to a combination of factors, such as broadcasting the large checkpoint object, but also the calculations of each peer that transforms the previous DAG is causing the validators to be unresponsive for a period of time.  
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/drawio/new_fix_throughput.pdf}
+	\caption{\footnotesize{Transaction throughput over a single run. The x-axis denotes time passed in seconds. The right y-axis shows the current average transaction throughput in transactions per second. The left y-axis lists the number of confirmed transaction in each time period.}}
+	\label{fig:txn_throughput}
+\end{figure}
+ 
+In comparison to traditional blockchains that have a strict theoretical bound in terms of transaction throughput and latency, our system performs very well. For example, a transaction in bitcoin is confirmed in a new block which are released each 10 minutes. Thus, in theory the average transaction latency is 5 minutes. In practice, the latency can be much higher as transactions with higher fees are prioritized and transactions can be in a pending state for days.
+The transaction throughput of bitcoin is also 5 to 7 transaction per second and average the transaction throughput of ethereum is 24 transactions per second. The average transaction throughput of our system varies between 60 and 100 transactions per second. To make a more fair comparison it is required to get a more precise picture of the performance of our application. Thus it is required to perform more testing, especially on a real network with many more peers and with varying sizes of network bandwidth.

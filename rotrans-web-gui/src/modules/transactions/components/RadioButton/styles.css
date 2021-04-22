@@ -1,0 +1,13 @@
+.radio-label {
+  font-size: 15px !important;
+  line-height: 32px !important;
+  color: #333333 !important;
+}
+
+.radio-group {
+  flex-direction: row !important;
+}
+
+.radio-component {
+  margin-bottom: 1rem;
+}

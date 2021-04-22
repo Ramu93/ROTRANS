@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolBar component Matches with snapshot - without selected validator 1`] = `
+Array [
+  <div
+    className="toolbar-details-row"
+  >
+    <div
+      className="toolbar-title-div"
+    >
+      <span
+        className="custom-header-title"
+        data-testid="toolbarTitle"
+      >
+        Visualization
+      </span>
+      <span
+        className="toolbar-sub-title"
+      >
+        Connection is established and secure.
+      </span>
+    </div>
+    <div
+      className="toolbar-profile-div"
+    >
+      <div
+        className="toolbar-profile-component"
+        onClick={[Function]}
+      >
+        <div
+          className="toolbar-image-div"
+        >
+          <div
+            className="toolbar-avatar"
+          />
+        </div>
+        <div
+          className="toolbar-name-div"
+        >
+          <span
+            className="toolbar-name"
+            data-testid="toolbarSelectedAgentName"
+          >
+            ABC
+          </span>
+          <span
+            className="toolbar-ip"
+            data-testid="toolbarSelectedAgentIp"
+          >
+            192.168.1.1
+          </span>
+        </div>
+        <div
+          className="toolbar-icon-div"
+        >
+          <img
+            className="icon"
+            src={
+              Object {
+                "ReactComponent": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "render": [Function],
+                },
+                "__esModule": true,
+                "default": "down.svg",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  <hr />,
+]
+`;
+
+exports[`ToolBar component Matches with snapshot - without selected validator 2`] = `
+Array [
+  <div
+    className="toolbar-details-row"
+  >
+    <div
+      className="toolbar-title-div"
+    >
+      <span
+        className="custom-header-title"
+        data-testid="toolbarTitle"
+      >
+        Transactions
+      </span>
+      <span
+        className="toolbar-sub-title"
+      >
+        Connection is established and secure.
+      </span>
+    </div>
+    <div
+      className="toolbar-profile-div"
+    >
+      <div
+        className="toolbar-profile-component"
+        onClick={[Function]}
+      >
+        <div
+          className="toolbar-image-div"
+        >
+          <div
+            className="toolbar-avatar"
+          />
+        </div>
+        <div
+          className="toolbar-name-div"
+        >
+          <span
+            className="toolbar-name"
+            data-testid="toolbarSelectedAgentName"
+          >
+            DEF
+          </span>
+          <span
+            className="toolbar-ip"
+            data-testid="toolbarSelectedAgentIp"
+          >
+            192.168.1.2
+          </span>
+        </div>
+        <div
+          className="toolbar-icon-div"
+        >
+          <img
+            className="icon"
+            src={
+              Object {
+                "ReactComponent": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "render": [Function],
+                },
+                "__esModule": true,
+                "default": "down.svg",
+              }
+            }
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  <hr />,
+]
+`;

@@ -1,0 +1,5 @@
+-e ./network/
+-r ./network/requirements.txt
+-e ./checkpoint/
+-r ./checkpoint/REQUIREMENTS.txt
+

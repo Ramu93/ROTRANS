@@ -1,0 +1,23 @@
+.menubar {
+  width: 80px;
+  height: 100%;
+  background-color: #5026ac;
+}
+
+.menu {
+  width: 80px;
+  height: 80px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-no-pointer {
+  cursor: default;
+}
+
+.menu-active {
+  background-color: #6435c9;
+}

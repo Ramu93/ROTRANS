@@ -1,0 +1,29 @@
+.custom-table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+  justify-content: center;
+  margin: 8px;
+  margin-left: 50px;
+}
+
+.custom-table td,
+.custom-table th {
+  padding: 2px;
+  font-size: 12px;
+  text-align: left;
+}
+
+.custom-table tr {
+  border-radius: 5px;
+}
+
+.custom-table tr:nth-child(odd) {
+  background-color: #ececec;
+}
+
+.table-container {
+  /* max-height: 210px;
+  overflow: scroll;
+  scroll-behavior: smooth; */
+}

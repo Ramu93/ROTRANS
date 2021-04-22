@@ -1,0 +1,31 @@
+version: 1
+disable_existing_loggers: True,
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stdout
+loggers:
+  abcnet:
+    level: WARNING
+  abcnet.services:
+    level: WARNING
+  abcnet.pingpong:
+    level: WARNING
+  abcnet.simenv:
+    level: WARNING
+  __main__:
+    level: DEBUG
+  handlers.MessageDelegator:
+    level: WARNING
+  abccore.agent:
+    level: WARNING
+  abccore:
+    level: WARNING
+  root:
+    level: INFO
+  handlers: [console]

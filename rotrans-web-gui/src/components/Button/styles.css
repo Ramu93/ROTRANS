@@ -1,0 +1,47 @@
+.txt-btn-div {
+  height: 40px;
+  width: 160px;
+  background-color: #6435c9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.icon-btn-div {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-btn-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-btn {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background-color: #6435c9;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-label {
+  color: white;
+  font-size: 14px;
+}
+
+.btn-icon {
+  padding-top: 4px;
+}

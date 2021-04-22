@@ -1,0 +1,23 @@
+.info-input-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-left-div {
+  display: flex;
+}
+
+.info-right-div {
+  width: 344px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.generate-keys-btn {
+  margin-right: 5rem;
+}

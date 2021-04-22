@@ -1,0 +1,9 @@
+{
+  "id" : "peer0",
+  "receiveAddr" : "tcp://127.0.0.1:8001",
+  "publishAddr" : "tcp://127.0.0.1:8000",
+  "bindReceiveAddr" : "tcp://*:5014",
+  "bindPublishAddr" : "tcp://*:5015",
+  "net_private_key_seed" : "FOO_NET_PRIV_KEY",
+  "uiServerPort": 5001
+}

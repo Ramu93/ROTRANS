@@ -1,0 +1,38 @@
+.dropdown-container {
+  width: auto;
+  margin: 0;
+  position: absolute;
+  z-index: 9999;
+  top: 12em;
+}
+
+.dropdown-list {
+  padding: 0;
+  margin: 0;
+  background: #ffffff;
+  border: 2px solid #e5e5e5;
+  box-sizing: border-box;
+  color: #6435c9;
+}
+
+.dropdown-list :last-child {
+  border-bottom: 0px; 
+}
+
+.dropdown-list-item {
+  list-style: none;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0.5em;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-bottom: 1px solid rgb(228, 228, 228);
+}
+
+.dropdown-list-item :hover {
+  background-color: rgb(238, 237, 237);
+}
+
+.dropdown-list-item-selected {
+  background-color: rgb(238, 237, 237);
+}

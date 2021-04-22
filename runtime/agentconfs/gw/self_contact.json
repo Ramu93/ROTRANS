@@ -1,0 +1,8 @@
+{
+  "id" : "AminsGateway",
+  "receiveAddr" : "tcp://127.0.0.1:5001",
+  "publishAddr" : "tcp://127.0.0.1:5000",
+  "bindReceiveAddr" : "tcp://127.0.0.1:5001",
+  "bindPublishAddr" : "tcp://127.0.0.1:5000",
+  "net_private_key_seed" : "Gateway"
+}
